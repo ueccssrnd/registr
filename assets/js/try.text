@@ -1,0 +1,371 @@
+var xh;
+
+try {
+    xh = new XMLHttpRequest();
+} catch(e) {
+    try {
+        xh = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch(e) {
+        try {
+            xh = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch(e) {
+            alert("Your browser is broken!");
+            return false;
+        }
+    }
+}
+
+function sendRequest() {
+    xh.onreadystatechange = function() {
+        if(xh.readyState == 4 && xh.status == 200) {
+            document.getElementById('overlay-items').innerHTML = xh.responseText;
+
+            if(xh.responseText == "You are already registered.") {
+                $('#overlay').fadeIn(1000);
+                $('#overlay-items').fadeIn(1000);
+                $('input[type=text]').css('border', '5px solid rgb(221, 30, 47)');
+                setTimeout(function() {
+                    $('#overlay').fadeOut(1000);
+                    $('#overlay-items').fadeOut(1000);
+                }, 3000);
+                setTimeout(function() {
+                    $('input[type=text]').css('border', '5px solid rgb(33, 133, 89)');
+                }, 3000);
+                $('input[type=text]').val('');
+                $('#reg-full-name').focus();
+            } else if(xh.responseText == "Please fill up all fields.") {
+                if(document.getElementById('reg-full-name').value != "") {
+                    $('#reg-full-name').css('border', '5px solid rgb(33, 133, 89)');
+                    $('#reg-middle-initial').focus();
+                } else {
+                    $('#reg-full-name').css('border', '5px solid rgb(221, 30, 47)');
+                }
+
+                if(document.getElementById('reg-middle-initial').value != "") {
+                    $('#reg-middle-initial').css('border', '5px solid rgb(33, 133, 89)');
+                    $('#reg-last-name').focus();
+                } else {
+                    $('#reg-middle-initial').css('border', '5px solid rgb(221, 30, 47)');
+                }
+
+                if(document.getElementById('reg-last-name').value != "") {
+                    $('#reg-last-name').css('border', '5px solid rgb(33, 133, 89)');
+                    $('#reg-university').focus();
+                } else {
+                    $('#reg-last-name').css('border', '5px solid rgb(221, 30, 47)');
+                }
+
+                if(document.getElementById('reg-university').value != "") {
+                    $('#reg-university').css('border', '5px solid rgb(33, 133, 89)');
+                    $('#reg-college').focus();
+                } else {
+                    $('#reg-university').css('border', '5px solid rgb(221, 30, 47)');
+                }
+
+                if(document.getElementById('reg-college').value != "") {
+                    $('#reg-college').css('border', '5px solid rgb(33, 133, 89)');
+                    $('#reg-full-name').focus();
+                } else {
+                    $('#reg-college').css('border', '5px solid rgb(221, 30, 47)');
+                }
+
+                setTimeout(function() {
+                    $('input[type=text]').css('border', '5px solid rgb(33, 133, 89)');
+                }, 3000);
+            } else {
+                $('#overlay').fadeIn(1000);
+                $('#overlay-items').fadeIn(1000);
+                $('input[type=text]').css('background-color', 'rgb(33, 133, 89)');
+                $('input[type=text]').css('color', 'white;');
+                $('select').css('background-color', 'rgb(33, 133, 89)');
+                $('select').css('color', 'white;');
+                setTimeout(function() {
+                    $('#overlay').fadeOut(1000);
+                    $('#overlay-items').fadeOut(1000);
+                }, 3000);
+                setTimeout(function() {
+                    $('input[type=text]').css('background-color', 'white');
+                    $('input[type=text]').css('color', 'black;');
+                    $('select').css('background-color', 'white');
+                    $('select').css('color', 'black;');
+                }, 3000);
+                $('input[type=text]').css('color', 'white;');
+                $('input[type=text]').val('');
+                $('select').prop('selectedIndex', 0);
+                $('#reg-full-name').focus();
+            }
+        }
+    }
+
+    var fullName = document.getElementById('reg-full-name').value;
+    /* var firstName = document.getElementById('reg-first-name').value;
+    var middleInitial = document.getElementById('reg-middle-initial').value;
+    var lastName = document.getElementById('reg-last-name').value; */
+    var university = document.getElementById('reg-university').value;
+    var college = document.getElementById('reg-college').value;
+    /* var data = "?ifirstname=" + firstName;
+    data += "&imiddleinitial=" + middleInitial;
+    data += "&ilastname=" + lastName; */
+    var data = "?ifullname=" + fullName;
+    data += "&iuniversity=" + university;
+    data += "&icollege=" + college;
+
+    xh.open("GET", "request.php" + data, true);
+    xh.send(null);
+}
+
+function updateInfo() {
+    xh.onreadystatechange = function() {
+        if(xh.readyState == 4 && xh.status == 200) {
+
+        }
+    }
+
+    xh.open();
+    xh.send(null);
+}
+
+function removeInfo() {
+    xh.onreadystatechange = function() {
+        if(xh.readyState == 4 && xh.status == 200) {
+
+        }
+    }
+
+    xh.open();
+    xh.send(null);
+}
+
+function showUpdateForm() {
+    $('#overlay').css('display', 'inline-block');
+    $('#overlay-items-new').css('display', 'inline-block');
+    $('#update-form').css('display', 'inline-block');
+}
+function showRemoveForm() {
+    $('#overlay').css('display', 'inline-block');
+    $('#overlay-items-new').css('display', 'inline-block');
+    $('#remove-form').css('display', 'inline-block');
+}
+
+var universities = [
+    "Adamson University",
+    "Arrelano University",
+    "Centro Escolar University",
+    "Far Eastern University",
+    "Manuel L Quezon University",
+    "National Teacher's College",
+    "National University",
+    "University of the East",
+    "University of Santo Tomas"
+];
+
+var adu = [
+    "College of Architecture",
+    "College of Business Administration",
+    "College of Education",
+    "College of Engineering",
+    "College of Law",
+    "College of Liberal Arts",
+    "College of Nursing",
+    "College of Pharmacy",
+    "College of Science"
+];
+
+var aru = [
+    "College of Allied Medical Services",
+    "College of Arts and Sciences",
+    "College of Business And Technology - Institute of Accountancy",
+    "College of Business And Technology - School of Business and Administration",
+    "College of Business And Technology - School of Computer Science",
+    "College of Business And Technology - School of Hospitality and Tourism Management",
+    "School of Education",
+    "School of Law"
+];
+
+var ceu = [
+    "College of Medical Technology",
+    "College of Optometry",
+    "School of Dentistry",
+    "School of Nutrition and Hospitality Management",
+    "School of Pharmacy",
+    "School of Science and Technology",
+    "School of Accountancy & Management",
+    "School of Education-Liberal Arts-Music-Social Work",
+    "School of Nursing"
+];
+
+var feu = [
+    "Institute of Accounts, Business and Finance",
+    "Institute of Architecture and Fine Arts",
+    "Institute of Arts and Sciences",
+    "Institute of Education",
+    "Institute of Nursing",
+    "Institute of Tourism and Hotel Management"
+];
+
+var mlqu = [
+    "School of Accountancy and Business Arts",
+    "School of Architecture",
+    "School of Criminal Justice",
+    "School of Education, Arts & Sciences",
+    "School of Engineering",
+    "School of Information Technology",
+    "School of Law"
+];
+
+var ntc = [
+    "College of Arts and Sciences",
+    "College of Business",
+    "College of Computer Studies",
+    "College of Education",
+    "College of Hospitality Management"
+];
+
+var nu = [
+    "College of Letters and Sciences",
+    "School of Business and Management",
+    "School of Education",
+    "School of Engineering, Technology and Media",
+    "School of Health and Human Services",
+    "School of Professional Studies"
+];
+
+var ue = [
+    "College of Arts and Sciences",
+    "College of Business Administration",
+    "College of Computer Studies and Systems",
+    "College of Dentistry",
+    "College of Education",
+    "College of Engineering",
+    "College of Fine Arts, Architecture and Design",
+    "College of Law",
+    "College of Medicine",
+    "College of Nursing",
+    "College of Physical Therapy"
+];
+
+var ust = [
+    "AMV College of Accountancy",
+    "College of Architecture",
+    "College of Commerce and Business Administration",
+    "College of Education",
+    "College of Fine Arts and Design",
+    "College of Nursing",
+    "College of Rehabilitation Sciences",
+    "College of Science",
+    "College of Tourism and Hospitality Management",
+    "Conservatory of Music",
+    "Faculty of Arts and Letters",
+    "Faculty of Engineering",
+    "Faculty of Pharmacy"
+];
+
+function retrieveDataOne() {
+    $('#reg-university').autocomplete({
+        source: universities
+    });
+}
+
+function retrieveDataTwo() {
+    $item = $('#reg-university').val();
+
+    if($item == "Adamson University") {
+        $('#reg-college').autocomplete({
+            source: adu
+        });
+    } else if($item == "Arellano University") {
+        $('#reg-college').autocomplete({
+            source: aru
+        });
+    } else if($item == "Centro Escolar University") {
+        $('#reg-college').autocomplete({
+            source: ceu
+        });
+    } else if($item == "Far Eastern University") {
+        $('#reg-college').autocomplete({
+            source: feu
+        });
+    } else if($item == "Manuel L Quezon University") {
+        $('#reg-college').autocomplete({
+            source: mlqu
+        });
+    } else if($item == "National Teacher's College") {
+        $('#reg-college').autocomplete({
+            source: ntc
+        });
+    } else if($item == "National University") {
+        $('#reg-college').autocomplete({
+            source: nu
+        });
+    } else if($item == "University of the East") {
+        $('#reg-college').autocomplete({
+            source: ue
+        });
+    } else if($item == "University of Santo Tomas") {
+        $('#reg-college').autocomplete({
+            source: ust
+        });
+    }
+}
+
+$(document).ready(function() {
+    $('#reg-full-name').click(function() {
+        $('#help').stop().fadeOut(0);
+        $('#help').fadeIn(500);
+        document.getElementById('help').innerHTML = "<strong>Enter your name here.</strong><br><br>Example: Mark Anthony C. Sanchez";
+        setTimeout(function() {
+            $('#help').fadeOut(500);
+        }, 5000);
+    });
+
+    /* $('#reg-first-name').click(function() {
+        $('#help').stop().fadeOut(0);
+        $('#help').fadeIn(500);
+        document.getElementById('help').innerHTML = "<strong>Enter your name here.</strong><br><br>Example: Mark Anthony C. Sanchez";
+        setTimeout(function() {
+            $('#help').fadeOut(500);
+        }, 5000);
+    });
+
+    $('#reg-middle-initial').click(function() {
+        $('#help').stop().fadeOut(0);
+        $('#help').fadeIn(500);
+        document.getElementById('help').innerHTML = "<strong>Enter your name here.</strong><br><br>Example: Mark Anthony C. Sanchez";
+        setTimeout(function() {
+            $('#help').fadeOut(500);
+        }, 5000);
+    });
+
+    $('#reg-last-name').click(function() {
+        $('#help').stop().fadeOut(0);
+        $('#help').fadeIn(500);
+        document.getElementById('help').innerHTML = "<strong>Enter your name here.</strong><br><br>Example: Mark Anthony C. Sanchez";
+        setTimeout(function() {
+            $('#help').fadeOut(500);
+        }, 5000);
+    }); */
+    
+    $('#reg-university').click(function() {
+        $('#help').stop().fadeOut(0);
+        $('#help').fadeIn(500);
+        document.getElementById('help').innerHTML = "<strong>Select your university name from the list. Remember: Choose the university where you are currently enrolled.</strong><br><br>Example: Malaya University";
+        setTimeout(function() {
+            $('#help').fadeOut(500);
+        }, 5000);
+    });
+    
+    $('#reg-college').click(function() {
+        $('#help').stop().fadeOut(0);
+        $('#help').fadeIn(500);
+        document.getElementById('help').innerHTML = "<strong>Select your university college from the list.</strong><br><br>Example: College of Computer Studies and Systems";
+        setTimeout(function() {
+            $('#help').fadeOut(500);
+        }, 5000);
+    });
+
+    $('#overlay').click(function() {
+        $('#overlay').css('display', 'none');
+        $('#overlay-items-new').css('display', 'none');
+        $('form').css('display', 'none');
+    });
+});

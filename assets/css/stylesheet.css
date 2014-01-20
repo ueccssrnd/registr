@@ -1,0 +1,323 @@
+body {
+    background-color: rgba(6, 162, 203, 0.5);
+    font-family: "Helvetica";
+}
+
+input[type=text]:focus {
+    box-shadow: -10px 10px 25px black;
+    margin-top: -10px;
+    margin-bottom: +25px;
+    margin-left: +10px;
+}
+
+input[type=text] {
+    border: 5px solid rgb(33, 133, 89);
+    border-radius: 5px;
+    display: block;
+    font-size: 25px;
+    padding: 5px 50px;
+    margin-bottom: 15px;
+    height: 60px;
+    width: 520px;
+    outline: none;
+}
+
+select {
+    border: 5px solid rgb(33, 133, 89);
+    border-radius: 5px;
+    display: block;
+    font-size: 20px;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    height: 60px;
+    width: 460px;
+    outline: none;
+}
+
+input[type=button] {
+    background-color: rgb(76, 216, 168);
+    border: 5px solid rgb(33, 133, 89);
+    border-radius: 25px;
+    box-shadow: -10px 10px 25px black;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    position: absolute;
+    margin-top: -10px;
+    margin-bottom: +25px;
+    margin-left: 22%;
+    height: 60px;
+    width: 350px;
+    outline: none;
+}
+
+input[type=button]:active, .button:active {
+    box-shadow: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 20.25%;
+}
+
+table {
+    background-color: rgb(108, 208, 164);
+    border: 5px solid rgb(33, 133, 89);
+    border-radius: 5px;
+    line-height: 25px;
+    padding: 10px;
+    margin-left: 30%;
+}
+
+td {
+    background-color: rgb(240, 240, 240);
+    border: 5px solid rgb(33, 133, 89);
+    border-radius: 5px;
+    line-height: 25px;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.copyright {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+.logos {
+    border: 5px solid rgba(33, 133, 89, 0);
+    margin: 20px 5px 30px 5px;
+    height: 125px;
+    width: 125px;
+    transition: 0.5s;
+}
+
+.button {
+    background-color: rgb(240, 240, 240);
+    border: 5px solid rgb(33, 133, 89);
+    border-radius: 25px;
+    box-shadow: -10px 10px 25px black;
+    color: rgb(33, 133, 89);
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: -10px;
+    margin-bottom: +25px;
+    margin-left: 22%;
+    padding: 10px 25px;
+    width: 250px;
+    outline: none;
+}
+
+.button:active {
+    box-shadow: none;
+    margin-top: 0px;
+    margin-bottom: -1px;
+    margin-left: 20.25%;
+}
+
+#nav-bar {
+    background-color: rgb(201, 50, 67);
+    box-shadow: 0px 10px 50px black;
+    color: white;
+    position: fixed;
+    padding: 20px 50px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+#side-bar {
+    background-color: rgb(33, 133, 89);
+    box-shadow: -10px 0px 50px black;
+    position: fixed;
+    padding-top: 125px;
+    padding-bottom: 100px;
+    padding-left: 35px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 500px;
+}
+
+#title {
+    background-color: rgb(25, 40, 35);
+    border-radius: 0px 0px 100px 0px;
+    box-shadow: -10px 10px 25px black;
+    font: 30px "Helvetica";
+    position: absolute;
+    padding: 40px 75px 30px 40px;
+    top: 0;
+    left: 0;
+}
+
+#reg-form {
+    display: block;
+    position: fixed;
+    top: 65%;
+    left: 8%;
+    margin-top: -150px;
+    height: 300px;
+}
+
+#admin-div {
+    display: block;
+    position: fixed;
+    top: 40%;
+    left: 5%;
+    margin-top: -175px;
+    height: 300px;
+}
+
+#admin-table {
+    display: block;
+    position: fixed;
+    top: 40%;
+    right: 20%;
+    margin-top: -150px;
+    height: 300px;
+}
+
+#sponsor {
+    font: 15px italic "Helvetica";
+    float: right;
+    margin-top: 2px;
+}
+
+#sponsor-logo {
+    display: inline;
+    float: right;
+    margin-left: 25px;
+    margin-right: -15px;
+    height: 50px;
+    width: 50px;
+}
+
+#universities {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#overlay {
+    background-color: black;
+    display: none;
+    opacity: 0.75;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+#overlay-items {
+    background-color: rgb(133, 233, 189);
+    border: 5px solid rgb(33, 133, 89);
+    border-radius: 25px;
+    display: none;
+    font-size: 25px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -188px;
+    padding: 50px;
+    height: 25px;
+    width: 325px;
+    z-index: 3;
+}
+
+#help {
+    background-color: rgb(305, 246, 123);
+    border-radius: 25px;
+    box-shadow: -10px 10px 25px black;
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    padding: 15px 30px 25px 30px;
+    height: 75px;
+    width: 475px;
+    z-index: 1;
+}
+
+#indented {
+    margin-left: 75px;
+    width: 450px;
+}
+
+#place-holder {
+    color: rgb(150, 150, 150);
+}
+
+#reg-first-name, #reg-middle-initial, #reg-last-name {
+    display: inline;
+    margin-right: 6px;
+    width: 175px;
+}
+
+#update-form, #remove-form {
+    display: none;
+}
+
+#update-full-name, #update-university, #update-college {
+    margin-left: -10px;
+}
+
+#update-full-name:focus, #update-university:focus, #update-college:focus {
+    margin-left: 10px;
+}
+
+#update-button {
+    float: left;
+    position: relative;
+}
+
+#overlay-items-new {
+    background-color: rgb(133, 233, 189);
+    border: 5px solid rgb(33, 133, 89);
+    border-radius: 25px;
+    display: none;
+    position: fixed;
+    text-align: center;
+    overflow-y: scroll;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -350px;
+    padding: 50px;
+    height: 400px;
+    width: 600px;
+    z-index: 3;
+}
+
+#big {
+    font-size: 20px;
+}
+
+#new-name {
+    color: rgb(33, 133, 89);
+    display: block;
+    font-size: 20px;
+    text-decoration: none;
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: 22%;
+}
+
+#new-name:hover {
+    text-decoration: underline;
+}
+
+#question {
+    display: block;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+#list {
+    display: block;
+    text-align: left;
+}
